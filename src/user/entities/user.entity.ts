@@ -1,7 +1,7 @@
 import { Schema } from '@nestjs/mongoose';
 import { Prop, SchemaFactory } from '@nestjs/mongoose/dist';
 import { compareSync, hashSync } from 'bcrypt';
-import { Document } from 'mongoose';
+import { Document, HydratedDocument } from 'mongoose';
 
 @Schema({
   timestamps: true,
@@ -41,7 +41,7 @@ export class User extends Document {
   matchPassword: (password: string) => boolean;
 }
 
-type UserDocument = User;
+type UserDocument = HydratedDocument<User>;
 
 const userSchema = SchemaFactory.createForClass(User);
 

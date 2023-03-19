@@ -1,4 +1,4 @@
-import mongoose, { Document } from 'mongoose';
+import mongoose, { Document, HydratedDocument } from 'mongoose';
 import { Schema } from '@nestjs/mongoose';
 import { Prop, SchemaFactory } from '@nestjs/mongoose/dist';
 import { Category } from 'src/category/entities/category.entity';
@@ -70,7 +70,7 @@ export class Product extends Document {
   setImg: (secure_url: string, public_id: string) => void;
 }
 
-type ProductDocument = Product;
+type ProductDocument = HydratedDocument<Product>;
 
 const productSchema = SchemaFactory.createForClass(Product);
 

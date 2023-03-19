@@ -1,4 +1,4 @@
-import { Document } from 'mongoose';
+import { Document, HydratedDocument } from 'mongoose';
 import { Schema } from '@nestjs/mongoose';
 
 import { Prop, SchemaFactory } from '@nestjs/mongoose/dist';
@@ -40,7 +40,7 @@ export class Category extends Document {
   setImg: (secure_url: string, public_id: string) => void;
 }
 
-type CategoryDocument = Category;
+type CategoryDocument = HydratedDocument<Category>;
 
 const categorySchema = SchemaFactory.createForClass(Category);
 
